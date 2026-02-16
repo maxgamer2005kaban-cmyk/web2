@@ -1,0 +1,6 @@
+<b1>Список игроков</b1>
+{% for player in players %}
+<div>{{ player }}</div>
+{% empty %}
+<p>No players found.</p>
+{% endfor %}
