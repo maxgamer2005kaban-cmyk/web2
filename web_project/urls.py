@@ -7,4 +7,5 @@ urlpatterns = [
     path('', core_views.main_page),
     path('stats/', include('stats.urls')),
     path('players/', include('players.urls')),
+    path('matches/', include('matches.urls'))
 ]
