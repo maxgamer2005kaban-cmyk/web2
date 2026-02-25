@@ -1,1 +1,21 @@
-<h1>Статистика Лидерборд</h1>
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{{ title }}</h1>
+
+<p>Топ игроков сезона:</p>
+
+{% for player in players %}
+<p>{{ player }}</p>
+
+{% if forloop.last %}
+<hr>
+{% endif %}
+
+{% empty %}
+<p>Игроков пока нет в списке...</p>
+{% endfor %}
+
+<br>
+<p>Всего в списке: {{ players|length }}</p>
+{% endblock %}

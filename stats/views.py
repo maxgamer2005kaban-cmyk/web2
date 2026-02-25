@@ -30,4 +30,20 @@ def stats_category(request, slug):
     return render(request, 'stats/stats_category.html')
 
 def stats_leaderboard(request):
-    return render(request, 'stats/stats_leaderboard.html')
+    template_name = 'stats/stats_leaderboard.html'
+    
+    title = 'Таблица лидеров'
+    players = [
+        'Игрок_Алекс',
+        'Мастер_123',
+        'Про_Геймер',
+        'Легенда_Ник',
+        'Новичок_007'
+    ]
+    
+    context = {
+        'title': title,
+        'players': players
+    }
+    
+    return render(request, template_name, context)
