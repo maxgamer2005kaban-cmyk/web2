@@ -1,13 +1,17 @@
-<!DOCTYPE html>
-<html lang="ru">
+{% extends "base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <title>Статистика Детали</title>
-</head>
+{% block content %}
+<h1>{{ title }}</h1>
 
-<body>
-    <h1>Статистика Детали</h1>
-</body>
+<p>Статус игрока: {{ player_status }}</p>
 
-</html>
+{% if player_status == "platinum" %}
+<h2 style="color: #e5e4e2;">Платиновый уровень</h2>
+{% elif player_status == "gold" %}
+<h2 style="color: gold;">Золотой уровень</h2>
+{% else %}
+<p>Обычный игрок</p>
+{% endif %}
+
+<p>ID записи: {{ pk }}</p>
+{% endblock %}

@@ -1,17 +1,11 @@
-<!DOCTYPE html>
-<html lang="ru">
+{% extends 'base.html' %}
 
-<head>
-    <meta charset="UTF-8">
-    <title>Статистика Инфо</title>
-</head>
+{% block title %}Статистика Инфо{% endblock %}
 
-<body>
-    <h1>Статистика Инфо</h1>
-    <p>Игр: {{ games }}</p>
-    <p>Побед: {{ wins }}</p>
-    <p>Ничьих: {{ draws }}</p>
-    <p>Поражений: {{ loses }}</p>
-</body>
-
-</html>
+{% block content %}
+<h1>Статистика Инфо</h1>
+<p>Игр: {{ games }}</p>
+<p>Побед: {{ wins }}</p>
+<p>Ничьих: {{ draws }}</p>
+<p>Поражений: {{ loses }}</p>
+{% endblock %}
