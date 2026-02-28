@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-
+import datetime
     # Create your views here.
 
 def stats_info(request):
@@ -24,6 +24,9 @@ def stats_detail(request, pk):
         'pk': pk,
         'long_string': 'fghkjnljglshdvblisbdvilbiuvubvidbidvbivbihbdibidbvidbvlisdbvildbvsgdvbhbdlkdbvlisdbviydvddddddddddddddddddddddddddddddddd',
         'html_test': '<h1>Hello</h1>',
+        'string_with_newlines': 'aaa\nbbb\nccc',
+        'my_date': datetime.datetime.now(),
+        'test_text': 'ЭТО ОДиН маЛЕНЬкий шаг для чеЛОВека и оГрОмНый СКачОК для челоВЕЧЕсТВА',
     }
     
     return render(request, template_name, context)

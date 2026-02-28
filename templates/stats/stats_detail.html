@@ -9,6 +9,22 @@
 
 <p>Статус игрока: {{ player_status }}</p>
 
+<p>{{ string_with_newlines|linebreaksbr }}</p>
+
+<p>
+    {{ my_date|date:"d.m.y" }} <br>
+    {{ my_date|date:"d.m.Y" }} <br>
+    {{ my_date|date:"d.M.Y" }} <br>
+    {{ my_date|date:"d.E.Y" }}
+</p>
+
+<p>
+    <b>Нижний регистр:</b> {{ test_text|lower }} <br>
+    <b>Верхний регистр:</b> {{ test_text|upper }} <br>
+    <b>С большой буквы:</b> {{ test_text|capfirst }}
+    <b>{{test_text|title|truncatewords:4}}</b>
+</p>
+
 {% if player_status == "platinum" %}
 <h2 style="color: #e5e4e2;">Платиновый уровень</h2>
 {% elif player_status == "gold" %}
