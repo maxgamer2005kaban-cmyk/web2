@@ -21,7 +21,9 @@ def stats_detail(request, pk):
     context = {
         'title': title,
         'player_status': player_status,
-        'pk': pk
+        'pk': pk,
+        'long_string': 'fghkjnljglshdvblisbdvilbiuvubvidbidvbivbihbdibidbvidbvlisdbvildbvsgdvbhbdlkdbvlisdbviydvddddddddddddddddddddddddddddddddd',
+        'html_test': '<h1>Hello</h1>',
     }
     
     return render(request, template_name, context)
@@ -43,6 +45,7 @@ def stats_leaderboard(request):
     
     context = {
         'title': title,
+        'long_string': 'fghkjnljglshdvblisbdvilbiuvubvidbidvbivbihbdibidbvidbvlisdbvildbvsgdvbhbdlkdbvlisdbviydvdddddddddddddddd00000000000000000000000000000000000000000000000000000000000000000000000',
         'players': players
     }
     

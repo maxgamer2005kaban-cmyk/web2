@@ -1,23 +1,20 @@
-{# {% extends %} говорит Django, что этот файл использует структуру из base.html #}
 {% extends "base.html" %}
 
-{# Заполняем блок content, который мы создали в base.html #}
 {% block content %}
-{# {{ title }} - это вывод переменной, пришедшей из Python-кода (views.py) #}
 <h1>{{ title }}</h1>
+
+<p>Результат: {{ long_string|length }}</p>
+
+<p>{{ html_test|safe }}</p>
 
 <p>Статус игрока: {{ player_status }}</p>
 
-{# Логическое ветвление: если условие верно, покажем этот кусок кода #}
 {% if player_status == "platinum" %}
 <h2 style="color: #e5e4e2;">Платиновый уровень</h2>
-{# Если первое условие ложно, проверяем это #}
 {% elif player_status == "gold" %}
 <h2 style="color: gold;">Золотой уровень</h2>
-{# Если ни одно условие выше не подошло, сработает это #}
 {% else %}
 <p>Обычный игрок</p>
-{# Обязательно закрываем тег if #}
 {% endif %}
 
 <p>ID записи: {{ pk }}</p>
