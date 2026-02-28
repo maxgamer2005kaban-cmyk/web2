@@ -4,17 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Мой проект{% endblock %}</title>
+    <title>{# {% block %} - это "окно", которое дочерние шаблоны могут заполнить своим текстом #}
+        {% block title %}Мой проект{% endblock %}</title>
 </head>
 
 <body>
+    {# {% include %} позволяет вставить содержимое другого HTML-файла сюда #}
     {% include 'includes/header.html' %}
 
     <main>
         <!-- Изменяемая часть: разная на всех страницах -->
+        {# Основной блок контента, который будет меняться на каждой странице #}
         {% block content %}Контента пока нет :({% endblock %}
     </main>
 
+    {# Подключаем подвал сайта #}
     {% include 'includes/footer.html' %}
 </body>
 
