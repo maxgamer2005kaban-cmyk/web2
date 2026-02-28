@@ -1,3 +1,4 @@
+{% with request.resolver_match.view_name as view_name %}
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
@@ -8,11 +9,15 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-link active" aria-current="page" href="{% url 'stats:info' %}">Главная</a>
-                    <a class="nav-link" href="{% url 'stats:leaderboard' %}">Лидеры</a>
-                    <a class="nav-link" href="{% url 'stats:detail' 1 %}">Детали статистики</a>
+                    <a class="nav-link {% if view_name == 'stats:info' %}active{% endif %}" aria-current="page"
+                        href="{% url 'stats:info' %}">Главная</a>
+                    <a class="nav-link {% if view_name == 'stats:leaderboard' %}active{% endif %}"
+                        href="{% url 'stats:leaderboard' %}">Лидеры</a>
+                    <a class="nav-link {% if view_name == 'stats:detail' %}active{% endif %}"
+                        href="{% url 'stats:detail' 1 %}">Детали статистики</a>
                 </div>
             </div>
         </div>
     </nav>
 </header>
+{% endwith %}
