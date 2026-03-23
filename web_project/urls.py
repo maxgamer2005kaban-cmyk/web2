@@ -2,6 +2,8 @@ from django.contrib import admin
 from django.urls import include, path
 from core import views as core_views
 
+from django.conf import settings
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', core_views.main_page),
@@ -9,3 +11,9 @@ urlpatterns = [
     path('players/', include('players.urls')),
     path('matches/', include('matches.urls'))
 ]
+
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns = [
+        path('__debug__/', include(debug_toolbar.urls)),
+    ] + urlpatterns
