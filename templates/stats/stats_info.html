@@ -8,4 +8,13 @@
 <p>Побед: {{ wins }}</p>
 <p>Ничьих: {{ draws }}</p>
 <p>Поражений: {{ loses }}</p>
+
+<hr>
+<h2>Список видеопродуктов:</h2>
+{% for product in products %}
+    <p>{{ product.title }}</p>
+{% empty %}
+    <p>Товаров пока не подвезли</p>
+{% endfor %}
+
 {% endblock %}

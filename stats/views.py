@@ -1,26 +1,33 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 import datetime
+from .models import VideoProduct
     # Create your views here.
 
 def stats_info(request):
+    all_products = VideoProduct.objects.all()
+    
     data = {
         'games' : '120',
         'wins' : '100',
         'draws' : '10',
         'loses' : '10',
+        'products': all_products,
     }
     return render(request, 'stats/stats_info.html', data)
 
 def stats_detail(request, pk):
     template_name = 'stats/stats_detail.html'
     
-    title = f'Детали статистики #{pk}'
+    product = get_object_or_404(VideoProduct, pk=pk)
+    
+    title = f'Детали продукта: {product.title}'
     player_status = 'platinum'  # Можно поменять на 'gold', 'silver' или 'noob' для теста
     
     context = {
         'title': title,
         'player_status': player_status,
+        'product': product,
         'pk': pk,
         'long_string': 'fghkjnljglshdvblisbdvilbiuvubvidbidvbivbihbdibidbvidbvlisdbvildbvsgdvbhbdlkdbvlisdbviydvddddddddddddddddddddddddddddddddd',
         'html_test': '<h1>Hello</h1>',
