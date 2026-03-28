@@ -63,9 +63,29 @@ def stats_leaderboard(request):
     return render(request, template_name, context)
 
 def add_player(request):
-    # Создаем экземпляр формы (аналогично 'userform = UserForm()')
-    # При реальном использовании здесь также будет сохранение данных при request.method == 'POST'
-    form = PlayerForm()
+    success_message = None
     
-    # Передаем форму в шаблон 'add_player.html'
-    return render(request, 'stats/add_player.html', {'form': form})
+    if request.method == 'POST':
+        # Если форма отправлена, заполняем её данными из запроса
+        form = PlayerForm(request.POST)
+        
+        # Проверяем, правильно ли заполнены поля (валидация)
+        if form.is_valid():
+            # Достаем очищенные данные
+            name = form.cleaned_data['name']
+            age = form.cleaned_data['age']
+            
+            # Временно выводим сообщение в терминал сервера для проверки
+            print(f">>>> УСПЕХ! Пришли данные формы: ИГРОК '{name}', ВОЗРАСТ '{age}' <<<<")
+            
+            # Создаем сообщение об успехе для вывода на экран
+            success_message = f"Отлично! Игрок {name} ({age} лет) успешно добавлен. Данные получены!"
+            
+            # Очищаем форму для нового ввода
+            form = PlayerForm()
+    else:
+        # При первом простом заходе на страницу мы показываем пустую форму
+        form = PlayerForm()
+    
+    # Передаем форму и сообщение (если есть) в шаблон
+    return render(request, 'stats/add_player.html', {'form': form, 'success_message': success_message})

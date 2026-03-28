@@ -3,6 +3,12 @@
 {% block content %}
 <h2>Добавление нового игрока</h2>
 
+{% if success_message %}
+    <div style="padding: 15px; margin-bottom: 20px; border: 1px solid #d4edda; background-color: #d4edda; color: #155724; border-radius: 8px; max-width: 400px;">
+        <strong>Успех:</strong> {{ success_message }}
+    </div>
+{% endif %}
+
 <div style="padding: 15px; border: 1px solid #ccc; background-color: #f9f9f9; border-radius: 8px; margin-bottom: 20px; max-width: 400px;">
     <!-- Форма отправляется методом POST -->
     <form method="post">
