@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Добавление нового игрока</h2>
+
+<div style="padding: 15px; border: 1px solid #ccc; background-color: #f9f9f9; border-radius: 8px; margin-bottom: 20px; max-width: 400px;">
+    <!-- Форма отправляется методом POST -->
+    <form method="post">
+        <!-- Обязательный токен безопасности для POST запросов в Django -->
+        {% csrf_token %}
+        
+        <!-- Рендерим форму в виде таблицы, как было на скриншоте (там было просто {{ form }}, но внутри <table>) -->
+        <table>
+            {{ form.as_table }}
+        </table>
+        
+        <br>
+        <button type="submit">Добавить игрока</button>
+    </form>
+</div>
+{% endblock %}

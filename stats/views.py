@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 import datetime
 from .models import VideoProduct
+from .forms import PlayerForm
     # Create your views here.
 
 def stats_info(request):
@@ -60,3 +61,11 @@ def stats_leaderboard(request):
     }
     
     return render(request, template_name, context)
+
+def add_player(request):
+    # Создаем экземпляр формы (аналогично 'userform = UserForm()')
+    # При реальном использовании здесь также будет сохранение данных при request.method == 'POST'
+    form = PlayerForm()
+    
+    # Передаем форму в шаблон 'add_player.html'
+    return render(request, 'stats/add_player.html', {'form': form})

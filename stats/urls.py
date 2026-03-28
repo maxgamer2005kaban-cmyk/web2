@@ -9,4 +9,5 @@ urlpatterns = [
     path('leaderboard/',
          views.stats_leaderboard,
          name='leaderboard'),
+    path('add/', views.add_player, name='add_player'),
 ]
