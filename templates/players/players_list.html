@@ -3,6 +3,11 @@
 {% for player in players %}
 {# Выводим каждого игрока #}
 <div>{{ player }}</div>
+<a href="{% url 'players:edit' player.pk %}">Редактировать</a>
+<form method="post" action="{% url 'players:delete' player.pk %}">
+    {% csrf_token %}
+    <button type="submit">Удалить</button>
+</form>
 {# Если список пуст, сработает этот блок #}
 {% empty %}
 <p>No players found.</p>
